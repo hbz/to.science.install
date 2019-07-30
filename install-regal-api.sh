@@ -13,8 +13,9 @@ git clone https://github.com/edoweb/regal-import.git $ARCHIVE_HOME/regal-import
 fi
 
 cd $ARCHIVE_HOME/regal-api
-$ARCHIVE_HOME/activator-dist-1.3.5/activator clean
-$ARCHIVE_HOME/activator-dist-1.3.5/activator dist
+/opt/activator/bin/activator clean
+/opt/activator/bin/activator clean-files
+/opt/activator/bin/activator dist
 cd -
 
 cd $ARCHIVE_HOME
@@ -35,6 +36,7 @@ regalServerDir=regal-server.`date  +"%Y%m%d%H%M"`
 mv tmp/regal-api* $regalServerDir
 rm -rf tmp
 sed -e "s/^http\.port=.*$/http\.port=$PLAYPORT/" regal-server/conf/application.conf > $regalServerDir/conf/application.conf
+cp regal-server/conf/mail.properties $regalServerDir/conf/
 rm $ARCHIVE_HOME/regal-server
 ln -s $regalServerDir $ARCHIVE_HOME/regal-server
 
