@@ -49,7 +49,7 @@ echo ""
 echo "Please update port information in your apache conf to $PLAYPORT!" 
 echo "cp ../prod_conf/site.ssl.conf ../prod_conf/site.ssl.conf.bck ; cat ../prod_conf/site.ssl.conf|sed s/"$OLDPORT"/"$PLAYPORT"/g >tmp; mv tmp ../prod_conf/site.ssl.conf"
 echo "To perform switch, execute:"  
-echo "sudo service regal-api start"
+# echo "sudo service regal-api start" # monit startet den neuen Dienst schon automatisch
 echo "./loadCache.sh"
 echo "sudo service apache2 reload"
 echo "kill `cat $OLDDIR/RUNNING_PID`"
