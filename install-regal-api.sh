@@ -15,9 +15,9 @@ fi
 cd $ARCHIVE_HOME/to.science.api
 # Branch auswählen
 git pull origin master
-/opt/activator/bin/activator clean
-/opt/activator/bin/activator clean-files
-/opt/activator/bin/activator dist
+/opt/activator/activator clean
+/opt/activator/activator clean-files
+/opt/activator/activator dist
 cd -
 
 cd $ARCHIVE_HOME
