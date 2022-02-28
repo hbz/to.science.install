@@ -18,9 +18,9 @@ makeDir $ARCHIVE_HOME/conf
 makeDir $ARCHIVE_HOME/proai/cache
 makeDir $ARCHIVE_HOME/proai/sessions
 makeDir $ARCHIVE_HOME/proai/schemas
-if [ ! -f $ARCHIVE_HOME/regal-install/scripts/variables.conf ]
+if [ ! -f $ARCHIVE_HOME/to.science.install/scripts/variables.conf ]
 then
-ln -s $ARCHIVE_HOME/regal-install/variables.conf $ARCHIVE_HOME/regal-install/scripts/variables.conf
+ln -s $ARCHIVE_HOME/to.science.install/variables.conf $ARCHIVE_HOME/to.science.install/scripts/variables.conf
 fi
 }
 
@@ -33,12 +33,14 @@ substituteVars tomcat-users.xml $ARCHIVE_HOME/conf/tomcat-users.xml
 substituteVars setenv.sh $ARCHIVE_HOME/conf/setenv.sh
 substituteVars elasticsearch.yml $ARCHIVE_HOME/conf/elasticsearch.yml
 substituteVars site.conf $ARCHIVE_HOME/conf/site.conf
+substituteVars site.ssl.conf $ARCHIVE_HOME/conf/site.ssl.conf
 substituteVars logging.properties $ARCHIVE_HOME/conf/logging.properties
 substituteVars catalina.out $ARCHIVE_HOME/conf/catalina.out
 substituteVars Identify.xml $ARCHIVE_HOME/conf/Identify.xml
 substituteVars proai.properties $ARCHIVE_HOME/conf/proai.properties
 substituteVars robots.txt $ARCHIVE_HOME/conf/robots.txt
 substituteVars tomcat.conf $ARCHIVE_HOME/conf/tomcat.conf
+### hier weiter ###
 substituteVars application.conf $ARCHIVE_HOME/conf/application.conf
 substituteVars fedora.fcfg $ARCHIVE_HOME/conf/fedora.fcfg
 substituteVars tomcat6 $ARCHIVE_HOME/conf/tomcat6
