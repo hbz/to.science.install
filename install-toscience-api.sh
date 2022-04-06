@@ -9,20 +9,21 @@ git clone https://github.com/hbz/to.science.api.git $ARCHIVE_HOME/to.science.api
 fi
 if [ ! -d $ARCHIVE_HOME/to.science.import ]
 then
-git clone https://github.com/edoweb/regal-import.git $ARCHIVE_HOME/to.science.import
+git clone https://github.com/hbz/regal-import.git $ARCHIVE_HOME/to.science.import
 fi
 
 cd $ARCHIVE_HOME/to.science.api
 # Branch auswählen
-git pull origin master
-/opt/activator/activator clean
-/opt/activator/activator clean-files
-/opt/activator/activator dist
+git pull origin master-sles
+$ARCHIVE_HOME/activator/activator clean
+$ARCHIVE_HOME/activator/activator clean-files
+$ARCHIVE_HOME/activator/activator dist
 cd -
 
 cd $ARCHIVE_HOME
 
-OLDDIR=`readlink regal-server`
+OLDDIR=`readlink toscience-server`
+if [ -z $OLDDIR ]; then OLDDIR=toscience-server; fi
 OLDPORT=`grep "http.port" $OLDDIR/conf/application.conf | grep -o "[0-9]*"`
 
 if [ $OLDPORT -eq 9000 ]
@@ -33,25 +34,25 @@ PLAYPORT=9000
 fi
 
 
-unzip to.science.api/target/universal/regal-api-*zip -d tmp >/dev/null 
-regalServerDir=regal-server.`date  +"%Y%m%d%H%M"`
-mv tmp/regal-api* $regalServerDir
+unzip to.science.api/target/universal/toscience-api-*zip -d tmp >/dev/null 
+toscienceServerDir=toscience-server.`date  +"%Y%m%d%H%M"`
+mv tmp/toscience-api* $toscienceServerDir
 rm -rf tmp
-sed -e "s/^http\.port=.*$/http\.port=$PLAYPORT/" regal-server/conf/application.conf > $regalServerDir/conf/application.conf
-cp regal-server/conf/mail.properties $regalServerDir/conf/
-rm $ARCHIVE_HOME/regal-server
-ln -s $regalServerDir $ARCHIVE_HOME/regal-server
+sed -e "s/^http\.port=.*$/http\.port=$PLAYPORT/" /etc/toscience/conf/application.conf > $toscienceServerDir/conf/application.conf
+#cp toscience-server/conf/mail.properties $toscienceServerDir/conf/
+rm $ARCHIVE_HOME/toscience-server
+ln -s $toscienceServerDir $ARCHIVE_HOME/toscience-server
 
 echo ""
-echo "New executable available under $regalServerDir." 
-echo "Provide port info at $regalServerDir/conf/application.conf." 
+echo "New executable available under $toscienceServerDir." 
+echo "Provide port info at $toscienceServerDir/conf/application.conf." 
 echo "Current port is set to $PLAYPORT"
 echo "Ready to switch from $OLDDIR to $NEWDIR. From old port $OLDPORT to new $PLAYPORT"
 echo ""
 echo "Please update port information in your apache conf to $PLAYPORT!" 
-echo "cp ../prod_conf/site.ssl.conf ../prod_conf/site.ssl.conf.bck ; cat ../prod_conf/site.ssl.conf|sed s/"$OLDPORT"/"$PLAYPORT"/g >tmp; mv tmp ../prod_conf/site.ssl.conf"
+echo "cp ../conf/site.ssl.conf ../conf/site.ssl.conf.bck ; cat ../conf/site.ssl.conf|sed s/"$OLDPORT"/"$PLAYPORT"/g >tmp; mv tmp ../conf/site.ssl.conf"
 echo "To perform switch, execute:"  
-# echo "sudo service regal-api start" # monit startet den neuen Dienst schon automatisch
+echo "sudo service toscience-api start"
 echo "./loadCache.sh"
 echo "sudo service apache2 reload"
 echo "kill `cat $OLDDIR/RUNNING_PID`"

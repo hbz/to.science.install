@@ -46,6 +46,7 @@ substituteVars tomcat6 $ARCHIVE_HOME/conf/tomcat6
 substituteVars toscience-api $ARCHIVE_HOME/conf/toscience-api
 substituteVars heritrix-start.sh $ARCHIVE_HOME/conf/heritrix-start.sh
 substituteVars heritrix $ARCHIVE_HOME/conf/heritrix
+substituteVars toscience-api.service $ARCHIVE_HOME/conf/toscience-api.service
 
 cp templates/favicon.ico $ARCHIVE_HOME/conf/favicon.ico
 cp templates/datacite.cert $ARCHIVE_HOME/conf/datacite.cert
