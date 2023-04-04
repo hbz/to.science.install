@@ -5,9 +5,9 @@ Before=
 PartOf=
 
 [Service]
-EnvironmentFile=$ARCHIVE_HOME/conf/application.conf
-PIDFile=$ARCHIVE_HOME/toscience-server/RUNNING_PID
-WorkingDirectory=$ARCHIVE_HOME/toscience-server
+EnvironmentFile=/etc/toscience/api/application.conf
+PIDFile=$ARCHIVE_HOME/toscience-api/RUNNING_PID
+WorkingDirectory=$ARCHIVE_HOME/toscience-api
 Restart=on-failure
 User=$LINUX_USER
 Group=$LINUX_GROUP

@@ -3,16 +3,16 @@
 source variables.conf
 
 
-if [ ! -d $ARCHIVE_HOME/to.science.api ]
+if [ ! -d $ARCHIVE_HOME/src/to.science.api ]
 then
-git clone https://github.com/hbz/to.science.api.git $ARCHIVE_HOME/to.science.api 
+git clone https://github.com/hbz/to.science.api.git $ARCHIVE_HOME/src/to.science.api 
 fi
 if [ ! -d $ARCHIVE_HOME/to.science.import ]
 then
 git clone https://github.com/hbz/regal-import.git $ARCHIVE_HOME/to.science.import
 fi
 
-cd $ARCHIVE_HOME/to.science.api
+cd $ARCHIVE_HOME/src/to.science.api
 # Branch auswählen
 git pull origin master-sles
 $ARCHIVE_HOME/activator/activator clean
@@ -34,11 +34,11 @@ PLAYPORT=9000
 fi
 
 
-unzip to.science.api/target/universal/toscience-api-*zip -d tmp >/dev/null 
+unzip src/to.science.api/target/universal/toscience-api-*zip -d src/tmp >/dev/null 
 toscienceServerDir=toscience-server.`date  +"%Y%m%d%H%M"`
-mv tmp/toscience-api* $toscienceServerDir
-rm -rf tmp
-sed -e "s/^http\.port=.*$/http\.port=$PLAYPORT/" /etc/toscience/conf/application.conf > $toscienceServerDir/conf/application.conf
+mv src/tmp/toscience-api* $toscienceServerDir
+rm -rf src/tmp
+sed -e "s/^http\.port=.*$/http\.port=$PLAYPORT/" /etc/toscience/api.conf/application.conf > $toscienceServerDir/conf/application.conf
 #cp toscience-server/conf/mail.properties $toscienceServerDir/conf/
 rm $ARCHIVE_HOME/toscience-server
 ln -s $toscienceServerDir $ARCHIVE_HOME/toscience-server
