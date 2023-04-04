@@ -35,10 +35,10 @@ fi
 
 
 unzip src/to.science.api/target/universal/toscience-api-*zip -d src/tmp >/dev/null 
-toscienceServerDir=toscience-server.`date  +"%Y%m%d%H%M"`
+toscienceServerDir=toscience-api.`date  +"%Y%m%d%H%M"`
 mv src/tmp/toscience-api* $toscienceServerDir
 rm -rf src/tmp
-sed -e "s/^http\.port=.*$/http\.port=$PLAYPORT/" /etc/toscience/api.conf/application.conf > $toscienceServerDir/conf/application.conf
+sed -e "s/^http\.port=.*$/http\.port=$PLAYPORT/" /etc/toscience/conf/application.conf > $toscienceServerDir/conf/application.conf
 #cp toscience-server/conf/mail.properties $toscienceServerDir/conf/
 rm $ARCHIVE_HOME/toscience-server
 ln -s $toscienceServerDir $ARCHIVE_HOME/toscience-server
