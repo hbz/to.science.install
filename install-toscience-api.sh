@@ -53,12 +53,12 @@ echo "monit has automatically started the new executable under port $PLAYPORT. C
 echo "(if you do not want monit to start the new executable automatically, you should have done \"monit unmonitor regal-api\" before you started this script)"
 echo "If the new executable should not yet be running, try to start it with \"sudo service regal-api start\""
 echo ""
-echo "Refresh Cache:"
-echo "./loadCache.sh"
-echo ""
 echo "To perform switch, update the port information in your apache conf to $PLAYPORT!" 
 echo "cp ../prod_conf/site.ssl.conf ../prod_conf/site.ssl.conf.bck ; cat ../prod_conf/site.ssl.conf|sed s/"$OLDPORT"/"$PLAYPORT"/g >tmp; mv tmp ../prod_conf/site.ssl.conf"
 echo "sudo service apache2 reload"
 echo "kill `cat $OLDDIR/RUNNING_PID`"
+echo ""
+echo "Refresh Cache:"
+echo "./loadCache.sh"
 
 cd -
