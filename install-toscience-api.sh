@@ -3,19 +3,21 @@
 source variables.conf
 
 
-if [ ! -d $ARCHIVE_HOME/regal-api ]
+if [ ! -d $ARCHIVE_HOME/to.science.api ]
 then
-git clone https://github.com/edoweb/regal-api.git $ARCHIVE_HOME/regal-api 
+git clone https://github.com/hbz/to.science.api.git $ARCHIVE_HOME/to.science.api 
 fi
-if [ ! -d $ARCHIVE_HOME/regal-import ]
+if [ ! -d $ARCHIVE_HOME/to.science.import ]
 then
-git clone https://github.com/edoweb/regal-import.git $ARCHIVE_HOME/regal-import
+git clone https://github.com/edoweb/regal-import.git $ARCHIVE_HOME/to.science.import
 fi
 
-cd $ARCHIVE_HOME/regal-api
-/opt/activator/bin/activator clean
-/opt/activator/bin/activator clean-files
-/opt/activator/bin/activator dist
+cd $ARCHIVE_HOME/to.science.api
+# Branch auswählen
+git pull origin master
+/opt/activator/activator clean
+/opt/activator/activator clean-files
+/opt/activator/activator dist
 cd -
 
 cd $ARCHIVE_HOME
@@ -32,7 +34,7 @@ PLAYPORT=9000
 fi
 
 
-unzip regal-api/target/universal/regal-api-*zip -d tmp >/dev/null 
+unzip to.science.api/target/universal/regal-api-*zip -d tmp >/dev/null 
 regalServerDir=regal-server.`date  +"%Y%m%d%H%M"`
 mv tmp/regal-api* $regalServerDir
 rm -rf tmp
