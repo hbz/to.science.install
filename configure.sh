@@ -15,9 +15,9 @@ makeDir $ARCHIVE_HOME/sync
 makeDir $ARCHIVE_HOME/fedora
 makeDir $ARCHIVE_HOME/logs
 makeDir $ARCHIVE_HOME/conf
-makeDir $ARCHIVE_HOME/proai/cache
-makeDir $ARCHIVE_HOME/proai/sessions
-makeDir $ARCHIVE_HOME/proai/schemas
+makeDir $ARCHIVE_HOME/oaipmh/cache
+makeDir $ARCHIVE_HOME/oaipmh/sessions
+makeDir $ARCHIVE_HOME/oaipmh/schemas
 if [ ! -f $ARCHIVE_HOME/to.science.install/scripts/variables.conf ]
 then
 ln -s $ARCHIVE_HOME/to.science.install/variables.conf $ARCHIVE_HOME/to.science.install/scripts/variables.conf
