@@ -22,9 +22,9 @@ cd -
 
 cd $ARCHIVE_HOME
 
-OLDDIR=`readlink toscience-server`
-if [ -z $OLDDIR ]; then OLDDIR=toscience-server; fi
-OLDPORT=`grep "http.port" $OLDDIR/conf/application.conf | grep -o "[0-9]*"`
+OLDDIR=`readlink toscience-api`
+CONF=`readlink $OLDDIR/conf`
+OLDPORT=`grep "http.port" $CONF/application.conf | grep -o "[0-9]*"`
 
 if [ $OLDPORT -eq 9000 ]
 then
@@ -32,6 +32,7 @@ PLAYPORT=9100
 else
 PLAYPORT=9000
 fi
+
 
 
 unzip src/to.science.api/target/universal/toscience-api-*zip -d src/tmp >/dev/null 
@@ -56,5 +57,8 @@ echo "sudo service toscience-api start"
 echo "./loadCache.sh"
 echo "sudo service apache2 reload"
 echo "kill `cat $OLDDIR/RUNNING_PID`"
+echo ""
+echo "Refresh Cache:"
+echo "./loadCache.sh"
 
 cd -
