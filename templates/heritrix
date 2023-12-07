@@ -2,6 +2,7 @@
 #
 # /etc/init.d/regal-api 
 # Modified by Jan Schnasse schnasse@gmx.de
+# Modified by Ingolf Kuss
 #
 # Written by Miquel van Smoorenburg <miquels@cistron.nl>.
 # Modified for Debian GNU/Linux by Ian Murdock <imurdock@gnu.ai.mit.edu>.
@@ -33,8 +34,8 @@ DESC="Heritrix"
 JAVA_HOME=/opt/java
 JAVA_OPTS="-XX:+HeapDumpOnOutOfMemoryError -Xmx1024M"
 HOME="$ARCHIVE_HOME/heritrix"
-USER="$REGAL_USER"
-GROUP="$REGAL_GROUP"
+USER="$LINUX_USER"
+GROUP="$LINUX_GROUP"
 
 
 export JAVA_HOME

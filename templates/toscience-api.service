@@ -1,0 +1,26 @@
+[Unit]
+Description=The Toscience API
+After=apache2.target
+Before=
+PartOf=
+
+[Service]
+EnvironmentFile=/etc/toscience/api/application.conf
+PIDFile=$ARCHIVE_HOME/toscience-api/RUNNING_PID
+WorkingDirectory=$ARCHIVE_HOME/toscience-api
+Restart=on-failure
+User=$LINUX_USER
+Group=$LINUX_GROUP
+Type=notify
+PrivateTmp=true
+ExecStart=$ARCHIVE_HOME/conf/toscience-api start
+ExecReload=$ARCHIVE_HOME/conf/toscience-api start
+ExecStop=$ARCHIVE_HOME/conf/toscience-api stop
+KillMode=mixed
+TasksMax=infinity
+NotifyAccess=all
+
+[Install]
+WantedBy=
+Alias=regal-api.service
+
