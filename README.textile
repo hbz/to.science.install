@@ -1,13 +1,16 @@
-!https://raw.github.com/edoweb/regal/gh-pages/img/logo.png!
-!https://travis-ci.org/edoweb/regal-install.png?!:https://travis-ci.org/edoweb/regal-install
+!to.science-small.png(Toolbox Open Science Logo)!
 
 h1. About
 
-Regal - repository for electronic documents and bibliographic data 
+!https://api.codacy.com/project/badge/Grade/adaefb63fd5c45aba1a27ff1f9e4dd1b(Codacy Badge)!:https://app.codacy.com/gh/hbz/to.science.api?utm_source=github.com&utm_medium=referral&utm_content=hbz/to.science.api&utm_campaign=Badge_Grade_Settings
 
-For more information visit the "wiki":https://github.com/edoweb/edoweb2/wiki/
+to.science - Toolbox Open Science - Open Source Repository for Electronic Documents and Bibliographic Metadata
+
+For more information visit the "wiki":https://github.com/hbz/to.science/wiki
+
 
 h1. License
 
 Apache License  Version 2.0, January 2004  http://www.apache.org/licenses/
-Copyright 2014 hbz NRW (http://www.hbz-nrw.de/)
+Copyright 2023 hbz NRW (http://www.hbz-nrw.de/)
+
