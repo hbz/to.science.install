@@ -5,11 +5,10 @@ Before=toscience-api.service
 PartOf=
   
 [Service]
-CONF=/etc/toscience/forms
-EnvironmentFile=$CONF/env
+EnvironmentFile=/etc/toscience/forms/env
 WorkingDirectory=$ARCHIVE_HOME/toscience-forms
-PIDFile=$WorkingDirectory/RUNNING_PID
-ExecStart=$WorkingDirectory/bin/zettel -Dconfig.file=$CONF/application.conf -Dapplication.secret=$FORMS_SECRET -Dapplication.home=$WorkingDirectory  -Dhttp.port=9003
+PIDFile=$ARCHIVE_HOME/toscience-forms/RUNNING_PID
+ExecStart=$ARCHIVE_HOME/toscience-forms/bin/zettel -Dconfig.file=/etc/toscience/forms/application.conf -Dapplication.secret=$FORMS_SECRET -Dapplication.home=$ARCHIVE_HOME/toscience-forms  -Dhttp.port=9003
 Restart=on-failure
 User=$LINUX_USER
 Group=$LINUX_GROUP

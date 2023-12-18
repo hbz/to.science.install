@@ -4,11 +4,10 @@ After=network.target mariadb.service elasticsearch.service fedora.service toscie
 Before=apache2.target
 
 [Service]
-CONF=/etc/toscience/api
-EnvironmentFile=$CONF/env
+EnvironmentFile=/etc/toscience/api/env
 WorkingDirectory=$REGAL_APP
-PIDFile=$WorkingDirectory/RUNNING_PID
-ExecStart=$WorkingDirectory/bin/toscience-api -Dconfig.file=$CONF/application.conf -Dapplication.secret=$API_SECRET -Dapplication.home=$WorkingDirectory
+PIDFile=$REGAL_APP/RUNNING_PID
+ExecStart=$REGAL_APP/bin/toscience-api -Dconfig.file=/etc/toscience/api/application.conf -Dapplication.secret=$API_SECRET -Dapplication.home=$REGAL_APP
 #ExecReload=
 #ExecStop=
 Restart=on-failure

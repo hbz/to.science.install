@@ -6,7 +6,7 @@ Before=
 [Service]
 #EnvironmentFile=
 WorkingDirectory=$ARCHIVE_HOME/heritrix
-PIDFile=$WorkingDirectory/heritrix.pid
+PIDFile=$ARCHIVE_HOME/heritrix/heritrix.pid
 ExecStart=$ARCHIVE_HOME/heritrix/heritrix-start.sh
 #ExecReload=
 ExecStop=$ARCHIVE_HOME/heritrix/stop.sh

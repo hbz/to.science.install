@@ -5,11 +5,10 @@ Before=toscience-forms.service toscience-api.service
 PartOf=
   
 [Service]
-CONF=/etc/toscience/labels
-EnvironmentFile=$CONF/env
+EnvironmentFile=/etc/toscience/labels/env
 WorkingDirectory=$ARCHIVE_HOME/toscience-labels
-PIDFile=$WorkingDirectory/RUNNING_PID
-ExecStart=$WorkingDirectory/bin/etikett -Dconfig.file=$CONF/application.conf -Dapplication.secret=$LABELS_SECRET -Dapplication.home=$WorkingDirectory -Dhttp.port=9002
+PIDFile=$ARCHIVE_HOME/toscience-labels/RUNNING_PID
+ExecStart=$ARCHIVE_HOME/toscience-labels/bin/etikett -Dconfig.file=/etc/toscience/labels/application.conf -Dapplication.secret=$LABELS_SECRET -Dapplication.home=$ARCHIVE_HOME/toscience-labels -Dhttp.port=9002
 Restart=on-failure
 User=$LINUX_USER
 Group=$LINUX_GROUP
