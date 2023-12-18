@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <tomcat-users>
 <role rolename="manager"/>
-<user username="$FEDORA_USER" password="$PASSWORD" roles="manager"/>
+<user username="$FEDORA_USER" password="$FEDORA_PASSWORD" roles="manager"/>
 </tomcat-users>
 

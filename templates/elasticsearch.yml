@@ -1,2 +1,5 @@
 cluster.name: $SERVER
-
+path.conf: /etc/elasticsearch
+path.data: /var/lib/elasticsearch
+path.log: /var/log/elasticsearch
+path.plugins: /usr/share/elasticsearch/plugins

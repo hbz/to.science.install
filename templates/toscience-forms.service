@@ -1,0 +1,23 @@
+[Unit]
+Description=The to.science.forms webservice
+After=mariadb-service fedora.service toscience-labels.service
+Before=toscience-api.service
+PartOf=
+  
+[Service]
+CONF=/etc/toscience/forms
+EnvironmentFile=$CONF/env
+WorkingDirectory=$ARCHIVE_HOME/toscience-forms
+PIDFile=$WorkingDirectory/RUNNING_PID
+ExecStart=$WorkingDirectory/bin/zettel -Dconfig.file=$CONF/application.conf -Dapplication.secret=$FORMS_SECRET -Dapplication.home=$WorkingDirectory  -Dhttp.port=9003
+Restart=on-failure
+User=$LINUX_USER
+Group=$LINUX_GROUP
+PrivateTmp=true
+KillMode=mixed
+TasksMax=infinity
+NotifyAccess=all
+  
+[Install]
+WantedBy=multi-user.target
+Alias=zettel.service

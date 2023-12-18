@@ -1,6 +1,6 @@
 <?xml version='1.0' ?>
 <users>
-	<user name="$FEDORA_USER" password="$PASSWORD">
+	<user name="$FEDORA_USER" password="$FEDORA_PASSWORD">
 		<attribute name="fedoraRole">
 			<value>administrator</value>
 		</attribute>

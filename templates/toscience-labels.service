@@ -1,0 +1,23 @@
+[Unit]
+Description=The to.science.labels webservice
+After=mariadb-service fedora.service
+Before=toscience-forms.service toscience-api.service
+PartOf=
+  
+[Service]
+CONF=/etc/toscience/labels
+EnvironmentFile=$CONF/env
+WorkingDirectory=$ARCHIVE_HOME/toscience-labels
+PIDFile=$WorkingDirectory/RUNNING_PID
+ExecStart=$WorkingDirectory/bin/etikett -Dconfig.file=$CONF/application.conf -Dapplication.secret=$LABELS_SECRET -Dapplication.home=$WorkingDirectory -Dhttp.port=9002
+Restart=on-failure
+User=$LINUX_USER
+Group=$LINUX_GROUP
+PrivateTmp=true
+KillMode=mixed
+TasksMax=infinity
+NotifyAccess=all
+  
+[Install]
+WantedBy=multi-user.target
+Alias=etikett.service
