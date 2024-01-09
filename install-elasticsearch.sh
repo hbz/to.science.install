@@ -31,5 +31,10 @@ echo "Please press cntrl+C to abort"
   wget -4 https://repo1.maven.org/maven2/com/yakaz/elasticsearch/plugins/elasticsearch-analysis-combo/1.5.1/elasticsearch-analysis-combo-1.5.1.zip
   unzip elasticsearch-analysis-combo-1.5.1.zip
 
-echo "Start Elasticsearch"
+   chown toscience:users /usr/share/elasticsearch 
+   chown elasticsearch:elasticsearch /etc/elasticsearch/ 
+   chown elasticsearch:elasticsearch /etc/elasticsearch/elasticsearch.pid
+
+  echo "Start Elasticsearch"
+  systemctl enable elasticsearch.service
   systemctl start elasticsearch.service
