@@ -13,7 +13,7 @@ Environment=TOMCAT_HOME=$TOMCAT_HOME
 Environment=JAVA_HOME=/opt/jdk
 EnvironmentFile=/opt/toscience/git/to.science.install/variables.conf
 EnvironmentFile=$TOMCAT_HOME/bin/setenv.sh
-WorkingDirectory=$FEDORA_HOME
+WorkingDirectory=$TOMCAT_HOME
 #PIDFile=$TOMCAT_HOME/RUNNING_PID
 ExecStartPre=
 ExecStart=$TOMCAT_HOME/bin/catalina.sh start

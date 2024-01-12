@@ -38,13 +38,17 @@ substituteVars application.conf        $ARCHIVE_HOME/conf/application.conf
 substituteVars application.env         $ARCHIVE_HOME/conf/application.env
 substituteVars application.labels.conf $ARCHIVE_HOME/conf/application.labels.conf
 substituteVars application.forms.conf  $ARCHIVE_HOME/conf/application.forms.conf
+substituteVars elasticsearch.service $ARCHIVE_HOME/conf/elasticsearch.service
 substituteVars elasticsearch.yml $ARCHIVE_HOME/conf/elasticsearch.yml
 substituteVars fedora.install.properties $ARCHIVE_HOME/conf/fedora.install.properties
 substituteVars fedora.fcfg $ARCHIVE_HOME/conf/fedora.fcfg
 substituteVars fedora-users.xml $ARCHIVE_HOME/conf/fedora-users.xml
+substituteVars forms.env         $ARCHIVE_HOME/conf/forms.env
 substituteVars heritrix-start.sh $ARCHIVE_HOME/conf/heritrix-start.sh
 substituteVars heritrix.service $ARCHIVE_HOME/conf/heritrix.service
 substituteVars Identify.xml $ARCHIVE_HOME/conf/Identify.xml
+substituteVars labels.env         $ARCHIVE_HOME/conf/labels.env
+substituteVars mail.properties $ARCHIVE_HOME/conf/mail.properties
 substituteVars proai.properties $ARCHIVE_HOME/conf/proai.properties
 substituteVars robots.txt $ARCHIVE_HOME/conf/robots.txt
 substituteVars tomcat.setenv.sh $ARCHIVE_HOME/conf/tomcat.setenv.sh
@@ -124,6 +128,7 @@ sed -e "s,\$SERVER,$SERVER,g" \
 -e "s,\$EMAIL,$EMAIL,g" \
 -e "s,\$EMAIL_RECIPIENT_ADMIN_USERS,$EMAIL_RECIPIENT_ADMIN_USERS,g" \
 -e "s,\$EMAIL_RECIPIENT_PROJECT_ADMIN,$EMAIL_RECIPIENT_PROJECT_ADMIN,g" \
+-e "s,\$EMAIL_RECIPIENTS_JAVA_MAILS,$EMAIL_RECIPIENTS_JAVA_MAILS,g" \
 -e "s,\$FEDORA_USER,$FEDORA_USER,g" \
 -e "s,\$FEDORA_PASSWORD,$FEDORA_PASSWORD,g" \
 -e "s,\$FRONTEND,$FRONTEND,g" \

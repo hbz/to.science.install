@@ -2,8 +2,11 @@
 
 source variables.conf
 
-sudo service elasticsearch restart
-sudo service tomcat6 restart
-sudo service regal-api stop && sudo service regal-api start
-
+sudo systemctl restart elasticsearch.service
+sudo systemctl restart fedora.service
+sudo systemctl restart toscience-labels.service
+sudo systemctl restart toscience-forms.service
+sudo systemctl restart toscience-api.service
+sudo systemctl restart apache2.service
+sudo systemctl restart fph56-fpm.service
 
