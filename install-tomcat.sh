@@ -1,4 +1,4 @@
 #! /bin/bash
 
-sudo apt-get install tomcat6 tomcat6-admin
-sudo service tomcat6 start
+sudo zypper in tomcat6 tomcat6-admin
+sudo systemctl start tomcat.service

@@ -1,26 +1,21 @@
 [Unit]
-Description=The Toscience API
-After=apache2.target
-Before=
-PartOf=
+Description=The to.science.api webservice
+After=network.target mariadb.service elasticsearch.service fedora.service toscience-labels.service toscience-forms.service
+Before=apache2.target
 
 [Service]
-EnvironmentFile=/etc/toscience/api/application.conf
-PIDFile=$ARCHIVE_HOME/toscience-api/RUNNING_PID
-WorkingDirectory=$ARCHIVE_HOME/toscience-api
+EnvironmentFile=/etc/toscience/api/env
+WorkingDirectory=$REGAL_APP
+PIDFile=$REGAL_APP/RUNNING_PID
+ExecStart=$REGAL_APP/bin/toscience-api -Dconfig.file=/etc/toscience/api/application.conf -Dapplication.secret=$SECRET -Dapplication.home=$REGAL_APP
+#ExecReload=
+#ExecStop=
 Restart=on-failure
 User=$LINUX_USER
 Group=$LINUX_GROUP
-Type=notify
-PrivateTmp=true
-ExecStart=$ARCHIVE_HOME/conf/toscience-api start
-ExecReload=$ARCHIVE_HOME/conf/toscience-api start
-ExecStop=$ARCHIVE_HOME/conf/toscience-api stop
-KillMode=mixed
 TasksMax=infinity
 NotifyAccess=all
 
 [Install]
-WantedBy=
+WantedBy=multi-user.target
 Alias=regal-api.service
-

@@ -17,3 +17,8 @@ else
 	unzip typesafe-activator-1.3.5.zip -d $ARCHIVE_HOME 
 fi
 
+if [ -L $ARCHIVE_HOME/activator ]
+then
+	rm $ARCHIVE_HOME/activator
+fi
+ln -s $ARCHIVE_HOME/activator-dist-1.3.5 $ARCHIVE_HOME/activator

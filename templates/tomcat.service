@@ -1,0 +1,33 @@
+[Unit]
+Description=Der Tomcat Webcontainer
+After=mysql.service elasticsearch.service
+Before=toscience-label.service toscience-forms.service toscience-api.service apache2.service
+PartOf=
+
+[Service]
+#StandardError=tty
+#StandardOutput=tty
+RemainAfterExit=yes
+Environment=FEDORA_HOME=$ARCHIVE_HOME/fedora
+Environment=TOMCAT_HOME=$TOMCAT_HOME
+Environment=JAVA_HOME=/opt/jdk
+EnvironmentFile=/opt/toscience/git/to.science.install/variables.conf
+EnvironmentFile=$TOMCAT_HOME/bin/setenv.sh
+WorkingDirectory=$TOMCAT_HOME
+#PIDFile=$TOMCAT_HOME/RUNNING_PID
+ExecStartPre=
+ExecStart=$TOMCAT_HOME/bin/catalina.sh start
+ExecReload=$TOMCAT_HOME/bin/catalina.sh start
+ExecStop=$TOMCAT_HOME/bin/shutdown.sh
+Restart=on-failure
+User=$LINUX_USER
+Group=$LINUX_GROUP
+#Type=notify
+PrivateTmp=true
+#KillMode=mixed
+TasksMax=infinity
+NotifyAccess=all
+
+[Install]
+WantedBy=
+Alias=tomcat6.service fedora.service

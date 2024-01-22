@@ -1,0 +1,20 @@
+[Unit]
+Description=heritrix webcrawler
+After=network.target mariadb.service
+Before=
+
+[Service]
+#EnvironmentFile=
+WorkingDirectory=$ARCHIVE_HOME/heritrix
+PIDFile=$ARCHIVE_HOME/heritrix/heritrix.pid
+ExecStart=$ARCHIVE_HOME/heritrix/heritrix-start.sh
+#ExecReload=
+ExecStop=$ARCHIVE_HOME/heritrix/stop.sh
+Restart=on-failure
+User=$LINUX_USER
+Group=$LINUX_GROUP
+TasksMax=infinity
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target

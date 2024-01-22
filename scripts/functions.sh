@@ -110,7 +110,7 @@ while read line
 do 
 #echo $line
 urn=`echo $line|grep -o "urn[^\ ]*"`
-pid=`echo $line|grep -o "\(edoweb:[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\ \|$"`
+pid=`echo $line|grep -o "\($NAMESPACE:[0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\ \|$"`
 
 echo $pid , $urn
 done < idTable.txt | sort 
@@ -165,7 +165,7 @@ done <pid2urn.sorted.txt
 
 function listParts(){
 pid=$1
-curl -s api.edoweb-test.hbz-nrw.de/resource/$pid/parts | sed s/","/" "/g | sed s/"[^\[]*\["/""/g | sed s/"\]\}"/""/|sed s/"\""/""/g
+curl -s http://localhost:9000/resource/$pid/parts | sed s/","/" "/g | sed s/"[^\[]*\["/""/g | sed s/"\]\}"/""/|sed s/"\""/""/g
 }
 
 function listAllParts(){

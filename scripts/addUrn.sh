@@ -18,7 +18,7 @@ echo "$i success"
 else 
 echo "$i fail"
 fi 
-done | grep fail |grep -o "edoweb:[^\ ]*" > pidswithnourn.txt
+done | grep fail |grep -o "$NAMESPACE:[^\ ]*" > pidswithnourn.txt
 
 pidfile=pidswithnourn.txt
 
