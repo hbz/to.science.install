@@ -7,7 +7,7 @@ Before=apache2.target
 EnvironmentFile=/etc/toscience/api/env
 WorkingDirectory=$REGAL_APP
 PIDFile=$REGAL_APP/RUNNING_PID
-ExecStart=$REGAL_APP/bin/toscience-api -Dconfig.file=/etc/toscience/api/application.conf -Dapplication.secret=$SECRET -Dapplication.home=$REGAL_APP
+ExecStart=$REGAL_APP/bin/toscience-api -Dconfig.file=/etc/toscience/api/application.conf -Dplay.crypto.secret=$SECRET -Dapplication.home=$REGAL_APP
 #ExecReload=
 #ExecStop=
 Restart=on-failure

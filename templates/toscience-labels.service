@@ -8,7 +8,7 @@ PartOf=
 EnvironmentFile=/etc/toscience/labels/env
 WorkingDirectory=$ARCHIVE_HOME/toscience-labels
 PIDFile=$ARCHIVE_HOME/toscience-labels/RUNNING_PID
-ExecStart=$ARCHIVE_HOME/toscience-labels/bin/etikett -Dconfig.file=/etc/toscience/labels/application.conf -Dapplication.secret=$SECRET -Dapplication.home=$ARCHIVE_HOME/toscience-labels -Dhttp.port=9002
+ExecStart=$ARCHIVE_HOME/toscience-labels/bin/etikett -Dconfig.file=/etc/toscience/labels/application.conf -Dplay.crypto.secret=$SECRET -Dapplication.home=$ARCHIVE_HOME/toscience-labels -Dhttp.port=9002
 Restart=on-failure
 User=$LINUX_USER
 Group=$LINUX_GROUP

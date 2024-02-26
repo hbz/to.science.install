@@ -8,7 +8,7 @@ PartOf=
 EnvironmentFile=/etc/toscience/forms/env
 WorkingDirectory=$ARCHIVE_HOME/toscience-forms
 PIDFile=$ARCHIVE_HOME/toscience-forms/RUNNING_PID
-ExecStart=$ARCHIVE_HOME/toscience-forms/bin/zettel -Dconfig.file=/etc/toscience/forms/application.conf -Dapplication.secret=$SECRET -Dapplication.home=$ARCHIVE_HOME/toscience-forms  -Dhttp.port=9003
+ExecStart=$ARCHIVE_HOME/toscience-forms/bin/zettel -Dconfig.file=/etc/toscience/forms/application.conf -Dplay.crypto.secret=$SECRET -Dapplication.home=$ARCHIVE_HOME/toscience-forms  -Dhttp.port=9003
 Restart=on-failure
 User=$LINUX_USER
 Group=$LINUX_GROUP
