@@ -18,4 +18,3 @@ NotifyAccess=all
 
 [Install]
 WantedBy=multi-user.target
-Alias=regal-api.service

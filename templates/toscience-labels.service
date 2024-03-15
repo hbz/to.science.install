@@ -19,4 +19,3 @@ NotifyAccess=all
   
 [Install]
 WantedBy=multi-user.target
-Alias=etikett.service
