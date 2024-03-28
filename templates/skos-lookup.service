@@ -5,9 +5,9 @@ Before=apache2.target
 
 [Service]
 EnvironmentFile=/etc/toscience/skos-lookup/env
-WorkingDirectory=${HOME}
-PIDFile=${HOME}/RUNNING_PID
-ExecStart=${HOME}/bin/skos-lookup -Dconfig.file=/etc/toscience/skos-lookup/application.conf -Dplay.crypto.secret=${SECRET} -Dapplication.home=${HOME} -Dhttp.port=${PORT} -Dapplication.logpath=${HOME}/logs/application.log
+WorkingDirectory=$ARCHIVE_HOME/skos-lookup
+PIDFile=$ARCHIVE_HOME/skos-lookup/RUNNING_PID
+ExecStart=$ARCHIVE_HOME/skos-lookup/bin/skos-lookup -Dconfig.file=/etc/toscience/skos-lookup/application.conf -Dplay.crypto.secret=${SECRET} -Dapplication.home=${HOME} -Dhttp.port=${PORT} -Dapplication.logpath=${HOME}/logs/application.log
 Restart=on-failure
 User=toscience
 Group=users
