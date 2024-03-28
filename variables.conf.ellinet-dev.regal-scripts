@@ -1,0 +1,58 @@
+#
+# Project,Namespace,Indexname
+#
+INDEXNAME=frl
+#
+# Layout
+#
+REGAL_HOME=/opt/regal
+REGAL_LOGS=$REGAL_HOME/logs
+REGAL_APP=$REGAL_HOME/regal-server
+REGAL_SRC=$REGAL_HOME/regal-api
+REGAL_TMP=$REGAL_HOME/tmp
+REGAL_BACKUP=$REGAL_HOME/backup
+HERITRIX_DIR=$REGAL_HOME/heritrix-data
+APACHE_LOG=/var/log/apache2
+APACHE_ACCESS_LOGNAME=other_vhosts_access.log
+CRONJOBS_DIR=$REGAL_HOME/regal-scripts
+TOMCAT_HOME=$REGAL_HOME/fedora/tomcat
+TOMCAT_CONF=$TOMCAT_HOME/conf
+ELASTICSEARCH_CONF=/etc/elasticsearch
+MATOMO=$REGAL_HOME/piwik
+
+#
+# Logins
+#
+REGAL_PASSWORD=06edo11web13
+REGAL_ADMIN=edoweb-admin
+REGAL_PASSWORD=$REGAL_PASSWORD
+FEDORA_ADMIN=admin
+FEDORA_PASSWORD=$REGAL_PASSWORD
+MATOMO_ADMIN=admin
+MATOMO_PASSWORD=$REGAL_PASSWORD
+
+#
+# Web-APIs
+#
+SERVER=ellinet-dev.hbz-nrw.de
+BACKEND=https://api.$SERVER
+FRONTEND=https://$SERVER
+HERITRIX_URL=https://localhost:8443
+HERITRIX_DATA=https://$SERVER
+URNBASE=$FRONTEND/resource/
+MATOMO_URL=https://stats.$SERVER
+ELASTICSEARCH=$BACKEND/search
+FEDORA=$BACKEND/fedora
+OAI_PMH=$BACKEND/oai-pmh
+
+#
+# Emails
+#
+EMAIL=root@localhost
+EMAIL_RECIPIENT_PROJECT_ADMIN="root\@localhost.de"
+EMAIL_RECIPIENT_ADMIN_USERS=$EMAIL_RECIPIENT_PROJECT_ADMIN
+
+#
+# Daten
+#
+RDM_RESOURCES=/opt/ellinet_repo/resources
