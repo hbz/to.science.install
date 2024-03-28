@@ -31,6 +31,7 @@ function createConfig()
 export API_SECRET=`uuidgen`
 export LABELS_SECRET=`uuidgen`
 export FORMS_SECRET=`uuidgen`
+export SKOS_LOOKUP_SECRET=`uuidgen`
 export ADMIN_HASH=`echo -n ${ADMIN_SALT}${PASSWORD} | sha256sum | sed -e "s/  \-$//"`
 export DATETIME=`date "+%Y-%m-%dT%H:%M:%SZ"`
 substituteVars api.properties $ARCHIVE_HOME/conf/api.properties
@@ -48,6 +49,7 @@ substituteVars heritrix-start.sh $ARCHIVE_HOME/conf/heritrix-start.sh
 substituteVars heritrix.service $ARCHIVE_HOME/conf/heritrix.service
 substituteVars Identify.xml $ARCHIVE_HOME/conf/Identify.xml
 substituteVars labels.env         $ARCHIVE_HOME/conf/labels.env
+substituteVars skos-lookup.env    $ARCHIVE_HOME/conf/skos-lookup.env
 substituteVars mail.properties $ARCHIVE_HOME/conf/mail.properties
 substituteVars proai.properties $ARCHIVE_HOME/conf/proai.properties
 substituteVars robots.txt $ARCHIVE_HOME/conf/robots.txt
@@ -157,6 +159,7 @@ sed -e "s;\$SERVER;$SERVER;g" \
 -e "s;\$REGAL_LOGS;$REGAL_LOGS;g" \
 -e "s;\$REGAL_PASSWORD;$REGAL_PASSWORD;g" \
 -e "s;\$REGAL_TMP;$REGAL_TMP;g" \
+-e "s;\$SKOS_LOOKUP_SECRET;$SKOS_LOOKUP_SECRET;g" \
 -e "s;\$SSL_PUBLIC_CERT_BACKEND;$SSL_PUBLIC_CERT_BACKEND;g" \
 -e "s;\$SSL_PRIVATE_KEY_BACKEND;$SSL_PRIVATE_KEY_BACKEND;g" \
 -e "s;\$SSL_PUBLIC_CERT_FRONTEND;$SSL_PUBLIC_CERT_FRONTEND;g" \
