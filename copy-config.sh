@@ -18,6 +18,7 @@ cp $ARCHIVE_HOME/conf/labels.env    /etc/toscience/labels/env
 cp $ARCHIVE_HOME/conf/application.labels.conf /etc/toscience/labels/application.conf
 cp $ARCHIVE_HOME/conf/application.forms.conf  /etc/toscience/forms/application.conf
 cp $ARCHIVE_HOME/conf/forms.env    /etc/toscience/forms/env
+cp $ARCHIVE_HOME/conf/skos-lookup.env   /etc/toscience/skos-lookup/env
 cp $ARCHIVE_HOME/conf/heritrix-start.sh $ARCHIVE_HOME/heritrix/
 cp $ARCHIVE_HOME/conf/Identify.xml $ARCHIVE_HOME/drupal/oai/pmh/
 #cp $ARCHIVE_HOME/conf/robots.txt $ARCHIVE_HOME/python3/lib/python3.6/site-packages/wpull/testing/static/
