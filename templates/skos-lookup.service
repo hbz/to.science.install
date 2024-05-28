@@ -1,0 +1,17 @@
+[Unit]
+Description=The SKOS Lookup webservice to support autocompletion
+After=network.target mariadb.service elasticsearch.service fedora.service toscience-labels.service toscience-forms.service
+Before=apache2.target
+
+[Service]
+EnvironmentFile=/etc/toscience/skos-lookup/env
+WorkingDirectory=$ARCHIVE_HOME/skos-lookup
+PIDFile=$ARCHIVE_HOME/skos-lookup/RUNNING_PID
+ExecStart=$ARCHIVE_HOME/skos-lookup/bin/skos-lookup -Dconfig.file=/etc/toscience/skos-lookup/application.conf -Dplay.crypto.secret=${SECRET} -Dapplication.home=${HOME} -Dhttp.port=${PORT} -Dapplication.logpath=${HOME}/logs/application.log
+Restart=on-failure
+User=toscience
+Group=users
+
+[Install]
+WantedBy=apache2.target
+Alias=

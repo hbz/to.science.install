@@ -31,6 +31,7 @@ function createConfig()
 export API_SECRET=`uuidgen`
 export LABELS_SECRET=`uuidgen`
 export FORMS_SECRET=`uuidgen`
+export SKOS_LOOKUP_SECRET=`uuidgen`
 export ADMIN_HASH=`echo -n ${ADMIN_SALT}${PASSWORD} | sha256sum | sed -e "s/  \-$//"`
 export DATETIME=`date "+%Y-%m-%dT%H:%M:%SZ"`
 substituteVars api.properties $ARCHIVE_HOME/conf/api.properties
@@ -48,6 +49,7 @@ substituteVars heritrix-start.sh $ARCHIVE_HOME/conf/heritrix-start.sh
 substituteVars heritrix.service $ARCHIVE_HOME/conf/heritrix.service
 substituteVars Identify.xml $ARCHIVE_HOME/conf/Identify.xml
 substituteVars labels.env         $ARCHIVE_HOME/conf/labels.env
+substituteVars skos-lookup.env    $ARCHIVE_HOME/conf/skos-lookup.env
 substituteVars mail.properties $ARCHIVE_HOME/conf/mail.properties
 substituteVars proai.properties $ARCHIVE_HOME/conf/proai.properties
 substituteVars robots.txt $ARCHIVE_HOME/conf/robots.txt
@@ -100,79 +102,80 @@ function substituteVars()
 {
 file=templates/$1
 target=$2
-sed -e "s,\$SERVER,$SERVER,g" \
--e "s,\$DOMAIN,$DOMAIN,g" \
--e "s,\$ADMIN_PASSWORD,$ADMIN_PASSWORD,g" \
--e "s,\$ADMIN_SALT,$ADMIN_SALT,g" \
--e "s,\$ADMIN_HASH,$ADMIN_HASH,g" \
--e "s,\$ADMIN_PREFIX,$ADMIN_PREFIX,g" \
--e "s,\$ADMIN_USER,$ADMIN_USER,g" \
--e "s,\$ADMIN_EMAIL,$ADMIN_EMAIL,g" \
--e "s,\$API_USER,$API_USER,g" \
--e "s,\$API_SECRET,$API_SECRET,g" \
--e "s,\$LABELS_SECRET,$LABELS_SECRET,g" \
--e "s,\$FORMS_SECRET,$FORMS_SECRET,g" \
--e "s,\$APACHE_LOGVERZ,$APACHE_LOGVERZ,g" \
--e "s,\$ARCHIVE_HOME,$ARCHIVE_HOME,g" \
--e "s,\$BACKEND,$BACKEND,g" \
--e "s,\$CRONJOBS_DIR,$CRONJOBS_DIR,g" \
--e "s,\$DATACITE_PASSWORD,$DATACITE_PASSWORD,g" \
--e "s,\$DATACITE_USER,$DATACITE_USER,g" \
--e "s,\$DATACITE_URL,$DATACITE_URL,g" \
--e "s,\$DATETIME,$DATETIME,g" \
--e "s,\$DOIPREFIX,$DOIPREFIX,g" \
--e "s,\$DOIRESOLVER,$DOIRESOLVER,g" \
--e "s,\$ELASTICSEARCH,$ELASTICSEARCH,g" \
--e "s,\$ELASTICSEARCH_CONF,$ELASTICSEARCH_CONF,g" \
--e "s,\$ELASTIC_PORT,$ELASTIC_PORT,g" \
--e "s,\$EMAIL,$EMAIL,g" \
--e "s,\$EMAIL_RECIPIENT_ADMIN_USERS,$EMAIL_RECIPIENT_ADMIN_USERS,g" \
--e "s,\$EMAIL_RECIPIENT_PROJECT_ADMIN,$EMAIL_RECIPIENT_PROJECT_ADMIN,g" \
--e "s,\$EMAIL_RECIPIENTS_JAVA_MAILS,$EMAIL_RECIPIENTS_JAVA_MAILS,g" \
--e "s,\$FEDORA_USER,$FEDORA_USER,g" \
--e "s,\$FEDORA_PASSWORD,$FEDORA_PASSWORD,g" \
--e "s,\$FRONTEND,$FRONTEND,g" \
--e "s,\$HERITRIX_DATA,$HERITRIX_DATA,g" \
--e "s,\$HERITRIX_DIR,$HERITRIX_DIR,g" \
--e "s,\$HERITRIX_URL,$HERITRIX_URL,g" \
--e "s,\$HERITRIX_PASSWORD,$HERITRIX_PASSWORD,g" \
--e "s,\$INDEXNAME,$INDEXNAME,g" \
--e "s,\$IP,$IP,g" \
--e "s,\$KEYSTORE,$KEYSTORE,g" \
--e "s,\$STOREPASS,$STOREPASS,g" \
--e "s,\$KEYPASS,$KEYPASS,g" \
--e "s,\$LABELS_PASSWORD,$LABELS_PASSWORD,g" \
--e "s,\$LINUX_GROUP,$LINUX_GROUP,g" \
--e "s,\$LINUX_USER,$LINUX_USER,g" \
--e "s,\$MYSQL_PASSWORD,$MYSQL_PASSWORD,g" \
--e "s,\$MYSQL_LABELS_PASSWORD,$MYSQL_LABELS_PASSWORD,g" \
--e "s,\$MYSQL_OAI_PASSWORD,$MYSQL_OAI_PASSWORD,g" \
+sed -e "s;\$SERVER;$SERVER;g" \
+-e "s;\$DOMAIN;$DOMAIN;g" \
+-e "s;\$ADMIN_PASSWORD;$ADMIN_PASSWORD;g" \
+-e "s;\$ADMIN_SALT;$ADMIN_SALT;g" \
+-e "s;\$ADMIN_HASH;$ADMIN_HASH;g" \
+-e "s;\$ADMIN_PREFIX;$ADMIN_PREFIX;g" \
+-e "s;\$ADMIN_USER;$ADMIN_USER;g" \
+-e "s;\$ADMIN_EMAIL;$ADMIN_EMAIL;g" \
+-e "s;\$API_USER;$API_USER;g" \
+-e "s;\$API_SECRET;$API_SECRET;g" \
+-e "s;\$LABELS_SECRET;$LABELS_SECRET;g" \
+-e "s;\$FORMS_SECRET;$FORMS_SECRET;g" \
+-e "s;\$APACHE_LOGVERZ;$APACHE_LOGVERZ;g" \
+-e "s;\$ARCHIVE_HOME;$ARCHIVE_HOME;g" \
+-e "s;\$BACKEND;$BACKEND;g" \
+-e "s;\$CRONJOBS_DIR;$CRONJOBS_DIR;g" \
+-e "s;\$DATACITE_PASSWORD;$DATACITE_PASSWORD;g" \
+-e "s;\$DATACITE_USER;$DATACITE_USER;g" \
+-e "s;\$DATACITE_URL;$DATACITE_URL;g" \
+-e "s;\$DATETIME;$DATETIME;g" \
+-e "s;\$DOIPREFIX;$DOIPREFIX;g" \
+-e "s;\$DOIRESOLVER;$DOIRESOLVER;g" \
+-e "s;\$ELASTICSEARCH;$ELASTICSEARCH;g" \
+-e "s;\$ELASTICSEARCH_CONF;$ELASTICSEARCH_CONF;g" \
+-e "s;\$ELASTIC_PORT;$ELASTIC_PORT;g" \
+-e "s;\$EMAIL_RECIPIENT_ADMIN_USERS;$EMAIL_RECIPIENT_ADMIN_USERS;g" \
+-e "s;\$EMAIL_RECIPIENT_PROJECT_ADMIN;$EMAIL_RECIPIENT_PROJECT_ADMIN;g" \
+-e "s;\$EMAIL_RECIPIENTS_JAVA_MAILS;$EMAIL_RECIPIENTS_JAVA_MAILS;g" \
+-e "s;\$EMAIL;$EMAIL;g" \
+-e "s;\$FEDORA_USER;$FEDORA_USER;g" \
+-e "s;\$FEDORA_PASSWORD;$FEDORA_PASSWORD;g" \
+-e "s;\$FRONTEND;$FRONTEND;g" \
+-e "s;\$HERITRIX_DATA;$HERITRIX_DATA;g" \
+-e "s;\$HERITRIX_DIR;$HERITRIX_DIR;g" \
+-e "s;\$HERITRIX_URL;$HERITRIX_URL;g" \
+-e "s;\$HERITRIX_PASSWORD;$HERITRIX_PASSWORD;g" \
+-e "s;\$INDEXNAME;$INDEXNAME;g" \
+-e "s;\$IP;$IP;g" \
+-e "s;\$KEYSTORE;$KEYSTORE;g" \
+-e "s;\$STOREPASS;$STOREPASS;g" \
+-e "s;\$KEYPASS;$KEYPASS;g" \
+-e "s;\$LABELS_PASSWORD;$LABELS_PASSWORD;g" \
+-e "s;\$LINUX_GROUP;$LINUX_GROUP;g" \
+-e "s;\$LINUX_USER;$LINUX_USER;g" \
+-e "s;\$MYSQL_PASSWORD;$MYSQL_PASSWORD;g" \
+-e "s;\$MYSQL_LABELS_PASSWORD;$MYSQL_LABELS_PASSWORD;g" \
+-e "s;\$MYSQL_OAI_PASSWORD;$MYSQL_OAI_PASSWORD;g" \
 -e "s%\$NAMESPACE%$NAMESPACE%g" \
--e "s,\$PASSWORD,$PASSWORD,g" \
--e "s,\$PLAYPORT,$PLAYPORT,g" \
--e "s,\$PROJECT,$PROJECT,g" \
--e "s,\$REGAL_ADMIN,$REGAL_ADMIN,g" \
--e "s,\$REGAL_APP,$REGAL_APP,g" \
--e "s,\$REGAL_BACKUP,$REGAL_BACKUP,g" \
--e "s,\$REGAL_LOGS,$REGAL_LOGS,g" \
--e "s,\$REGAL_PASSWORD,$REGAL_PASSWORD,g" \
--e "s,\$REGAL_TMP,$REGAL_TMP,g" \
--e "s,\$SSL_PUBLIC_CERT_BACKEND,$SSL_PUBLIC_CERT_BACKEND,g" \
--e "s,\$SSL_PRIVATE_KEY_BACKEND,$SSL_PRIVATE_KEY_BACKEND,g" \
--e "s,\$SSL_PUBLIC_CERT_FRONTEND,$SSL_PUBLIC_CERT_FRONTEND,g" \
--e "s,\$SSL_PRIVATE_KEY_FRONTEND,$SSL_PRIVATE_KEY_FRONTEND,g" \
--e "s,\$SSL_CHAIN_FRONTEND,$SSL_CHAIN_FRONTEND,g" \
--e "s,\$STATS_LOG,$STATS_LOG,g" \
--e "s,\$TMPDIR,$TMPDIR,g" \
--e "s,\$TOMCAT_CONF,$TOMCAT_CONF,g" \
--e "s,\$TOMCAT_HOME,$TOMCAT_HOME,g" \
--e "s,\$TOMCAT_PORT,$TOMCAT_PORT,g" \
--e "s,\$URNBASE,$URNBASE,g" \
--e "s,\$URNSNID,$URNSNID,g" \
--e "s,\$VERSION,$VERSION,g" \
--e "s,\$WAYBACK_SERVER,$WAYBACK_SERVER,g" \
--e "s,\$WAYBACK_PORT,$WAYBACK_PORT,g" \
--e "s,\$WHITELIST,$WHITELIST,g" $file > $target
+-e "s;\$PASSWORD;$PASSWORD;g" \
+-e "s;\$PLAYPORT;$PLAYPORT;g" \
+-e "s;\$PROJECT;$PROJECT;g" \
+-e "s;\$REGAL_ADMIN;$REGAL_ADMIN;g" \
+-e "s;\$REGAL_APP;$REGAL_APP;g" \
+-e "s;\$REGAL_BACKUP;$REGAL_BACKUP;g" \
+-e "s;\$REGAL_LOGS;$REGAL_LOGS;g" \
+-e "s;\$REGAL_PASSWORD;$REGAL_PASSWORD;g" \
+-e "s;\$REGAL_TMP;$REGAL_TMP;g" \
+-e "s;\$SKOS_LOOKUP_SECRET;$SKOS_LOOKUP_SECRET;g" \
+-e "s;\$SSL_PUBLIC_CERT_BACKEND;$SSL_PUBLIC_CERT_BACKEND;g" \
+-e "s;\$SSL_PRIVATE_KEY_BACKEND;$SSL_PRIVATE_KEY_BACKEND;g" \
+-e "s;\$SSL_PUBLIC_CERT_FRONTEND;$SSL_PUBLIC_CERT_FRONTEND;g" \
+-e "s;\$SSL_PRIVATE_KEY_FRONTEND;$SSL_PRIVATE_KEY_FRONTEND;g" \
+-e "s;\$SSL_CHAIN_FRONTEND;$SSL_CHAIN_FRONTEND;g" \
+-e "s;\$STATS_LOG;$STATS_LOG;g" \
+-e "s;\$TMPDIR;$TMPDIR;g" \
+-e "s;\$TOMCAT_CONF;$TOMCAT_CONF;g" \
+-e "s;\$TOMCAT_HOME;$TOMCAT_HOME;g" \
+-e "s;\$TOMCAT_PORT;$TOMCAT_PORT;g" \
+-e "s;\$URNBASE;$URNBASE;g" \
+-e "s;\$URNSNID;$URNSNID;g" \
+-e "s;\$VERSION;$VERSION;g" \
+-e "s;\$WAYBACK_SERVER;$WAYBACK_SERVER;g" \
+-e "s;\$WAYBACK_PORT;$WAYBACK_PORT;g" \
+-e "s;\$WHITELIST;$WHITELIST;g" $file > $target
 }
 
 makeDirs

@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
-sudo zypper in tomcat6 tomcat6-admin
+sudo zypper in tomcat tomcat-admin-webapps
 sudo systemctl start tomcat.service

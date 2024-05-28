@@ -16,6 +16,7 @@ echo "Please press cntrl+C to abort"
  cd /usr/share/elasticsearch/bin
  sudo su
  ./plugin -install mobz/elasticsearch-head/
+ # das erzeugt ein Unterverzeichnis plugins mit weiterm UVZ head.
  # install further elasticsearch plugins
  ## Plugin analysis-icu
  cd /usr/share/elasticsearch/plugins
@@ -33,7 +34,7 @@ echo "Please press cntrl+C to abort"
 
    chown toscience:users /usr/share/elasticsearch 
    chown elasticsearch:elasticsearch /etc/elasticsearch/ 
-   chown elasticsearch:elasticsearch /etc/elasticsearch/elasticsearch.pid
+   #chown elasticsearch:elasticsearch /etc/elasticsearch/elasticsearch.pid
 
   echo "Start Elasticsearch"
   systemctl enable elasticsearch.service

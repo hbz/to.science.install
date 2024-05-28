@@ -10,4 +10,5 @@ else
 fi
 
 export FEDORA_HOME=$ARCHIVE_HOME/fedora
+export CATALINA_HOME=$ARCHIVE_HOME/fedora/tomcat
 java -jar fcrepo-installer-3.7.1.jar  $ARCHIVE_HOME/conf/fedora.install.properties
