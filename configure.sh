@@ -50,6 +50,7 @@ substituteVars heritrix.service $ARCHIVE_HOME/conf/heritrix.service
 substituteVars Identify.xml $ARCHIVE_HOME/conf/Identify.xml
 substituteVars labels.env         $ARCHIVE_HOME/conf/labels.env
 substituteVars skos-lookup.env    $ARCHIVE_HOME/conf/skos-lookup.env
+substituteVars skos-lookup.service $ARCHIVE_HOME/conf/skos-lookup.service
 substituteVars mail.properties $ARCHIVE_HOME/conf/mail.properties
 substituteVars proai.properties $ARCHIVE_HOME/conf/proai.properties
 substituteVars robots.txt $ARCHIVE_HOME/conf/robots.txt
