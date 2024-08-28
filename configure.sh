@@ -12,9 +12,9 @@ fi
 function makeDirs()
 {
 makeDir $ARCHIVE_HOME/apps
-makeDir $ARCHIVE_HOME/backups
-makeDir $ARCHIVE_HOME/backups/elasticsearch
-makeDir $ARCHIVE_HOME/backups/mysql
+makeDir $ARCHIVE_HOME/backup
+makeDir $ARCHIVE_HOME/backup/elasticsearch
+makeDir $ARCHIVE_HOME/backup/mysql
 makeDir $ARCHIVE_HOME/conf
 makeDir $ARCHIVE_HOME/crawlreports
 makeDir $ARCHIVE_HOME/drupal/oai/pmh
