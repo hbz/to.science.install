@@ -72,7 +72,7 @@ cp templates/datacite.cert $ARCHIVE_HOME/conf/datacite.cert
 # Erzeugt ein selbstsigniertes Zertifikat und einen privaten Schlüssel für das Backend (API)
 # Quelle: https://linuxconfig.org/how-to-generate-a-self-signed-ssl-certificate-on-linux
 # zweite Quelle:  https://superuser.com/questions/1160382/how-to-pass-arguments-like-country-name-to-openssl-when-creating-self-signed-c
-openssl req -x509 -newkey rsa:4096 -sha512 -days 365 -nodes -out $SSL_PUBLIC_CERT_BACKEND -keyout $SSL_PRIVATE_KEY_BACKEND -subj "/C=$SSL_PUBLIC_CERT_COUNTRY/ST=$SSL_PUBLIC_CERT_STATE/L=$SSL_PUBLIC_CERT_LOCATION/O=$SSL_PUBLIC_CERT_ORGANIZATION/OU=$SSL_PUBLIC_CERT_ORGANIZATION_UNIT/CN=api.$DOMAIN"
+openssl req -x509 -newkey rsa:4096 -sha512 -days 365 -nodes -out $SSL_PUBLIC_CERT_BACKEND -keyout $SSL_PRIVATE_KEY_BACKEND -subj "/C=$SSL_PUBLIC_CERT_COUNTRY/ST=$SSL_PUBLIC_CERT_STATE/L=$SSL_PUBLIC_CERT_LOCATION/O=$SSL_PUBLIC_CERT_ORGANIZATION/OU=$SSL_PUBLIC_CERT_ORGANIZATION_UNIT/CN=$APIDOMAIN"
 
 # Erzeugt ein selbstsigniertes Zertifikat und einen privaten Schlüssel für das Frontend (Drupal)
 openssl req -x509 -newkey rsa:4096 -sha512 -days 365 -nodes -out $SSL_PUBLIC_CERT_FRONTEND -keyout $SSL_PRIVATE_KEY_FRONTEND -subj "/C=$SSL_PUBLIC_CERT_COUNTRY/ST=$SSL_PUBLIC_CERT_STATE/L=$SSL_PUBLIC_CERT_LOCATION/O=$SSL_PUBLIC_CERT_ORGANIZATION/OU=$SSL_PUBLIC_CERT_ORGANIZATION_UNIT/CN=$DOMAIN"
@@ -111,6 +111,7 @@ sed -e "s;\$SERVER;$SERVER;g" \
 -e "s;\$ADMIN_PREFIX;$ADMIN_PREFIX;g" \
 -e "s;\$ADMIN_USER;$ADMIN_USER;g" \
 -e "s;\$ADMIN_EMAIL;$ADMIN_EMAIL;g" \
+-e "s;\$APIDOMAIN;$APIDOMAIN;g" \
 -e "s;\$API_USER;$API_USER;g" \
 -e "s;\$API_SECRET;$API_SECRET;g" \
 -e "s;\$LABELS_SECRET;$LABELS_SECRET;g" \
