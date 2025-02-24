@@ -99,7 +99,7 @@ https://wiki.duraspace.org/display/FEDORA36/Spring+Security
     <comment>Filename to use for datastream downloads when none can be determined from the
 		sources listed in datastreamFilenameSource.</comment>
   </param>
-  <param name="fedoraServerHost" value="$DOMAIN">
+  <param name="fedoraServerHost" value="$APIDOMAIN">
     <comment>Defines the host name for the Fedora server, as seen from the 
 		outside world.</comment>
   </param>
@@ -205,7 +205,7 @@ https://wiki.duraspace.org/display/FEDORA36/Spring+Security
             required if GSearchDOManager is used, and the service requires 
             authentication.</comment>
     </param>
-    <param name="pidNamespace" value="changeme">
+    <param name="pidNamespace" value="$INDEXNAME">
       <comment>This is the namespace id for pids of newly-created objects. 
 	    	This should be unique for a repository. It can be from 1 to 17 
 	    	characters, and may only contain A-Z, a-z, 0-9, &apos;.&apos;, or &apos;-&apos; (dash).</comment>
@@ -216,7 +216,7 @@ https://wiki.duraspace.org/display/FEDORA36/Spring+Security
 	    	ConnectionPoolManager module). Default is the default provided by the 
 	    	ConnectionPoolManager.</comment>
     </param>
-    <param name="gSearchRESTURL" value="http://$FRONTEND:$TOMCAT_PORT/fedoragsearch/rest">
+    <param name="gSearchRESTURL" value="http://localhost:$TOMCAT_PORT/fedoragsearch/rest">
       <comment>The REST endpoint of the Fedora Generic Search service.
             This parameter is only required if GSearchDOManager is 
             used.</comment>
@@ -410,8 +410,8 @@ https://wiki.duraspace.org/display/FEDORA36/Spring+Security
     <param name="maxRecords" value="100"/>
     <param name="maxHeaders" value="100"/>
     <param name="adminEmails" value="$EMAIL"/>
-    <param name="repositoryName" value="Your Fedora Repository Name Here"/>
-    <param name="repositoryDomainName" value="$DOMAIN"/>
+    <param name="repositoryName" value="$APIDOMAIN Fedora Repository"/>
+    <param name="repositoryDomainName" value="$APIDOMAIN"/>
     <param name="friends" value="http://arXiv.org/oai2 http://memory.loc.gov/cgi-bin/oai2_0"/>
   </module>
   <module role="org.fcrepo.server.storage.translation.DOTranslator" class="org.fcrepo.server.storage.translation.DOTranslatorModule">
@@ -592,7 +592,7 @@ https://wiki.duraspace.org/display/FEDORA36/Spring+Security
       <comment>The JDBC connection URL.</comment>
     </param>
     <param name="ddlConverter" value="org.fcrepo.server.utilities.MySQLDDLConverter"/>
-    <param name="jdbcDriverClass" value="com.mysql.jdbc.Driver">
+    <param name="jdbcDriverClass" value="com.mysql.cj.jdbc.Driver">
       <comment>The JDBC driver class name.</comment>
     </param>
     <param name="dbPassword" value="$FEDORA_PASSWORD">
@@ -632,7 +632,7 @@ https://wiki.duraspace.org/display/FEDORA36/Spring+Security
             evictor thread (if applicable). A value less than zero indicates 
             that ceil(numIdle)/abs(numTestsPerEvictionRun) will be run.</comment>
     </param>
-    <param name="dbUsername" value="$FEDORA_USER">
+    <param name="dbUsername" value="fedoraAdmin">
       <comment>The database user name.</comment>
     </param>
     <param name="maxIdle" value="10">
@@ -661,14 +661,14 @@ https://wiki.duraspace.org/display/FEDORA36/Spring+Security
       <comment>When true, objects are validated before returned to the 
             pool.</comment>
     </param>
-    <param name="jdbcURL" value="jdbc:mysql://localhost/fedora3?useUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;autoReconnect=true">
+    <param name="jdbcURL" value="jdbc:derby:/opt/regal/fedora/derby/fedora3;create=true">
       <comment>The JDBC connection URL.</comment>
     </param>
     <param name="ddlConverter" value="org.fcrepo.server.utilities.DerbyDDLConverter"/>
     <param name="jdbcDriverClass" value="org.apache.derby.jdbc.EmbeddedDriver">
       <comment>The JDBC driver class name.</comment>
     </param>
-    <param name="dbPassword" value="$PASSWORD">
+    <param name="dbPassword" value="fedoraAdmin">
       <comment>The database password.</comment>
     </param>
     <param name="maxActive" value="100">
