@@ -43,6 +43,7 @@ substituteVars elasticsearch.service $ARCHIVE_HOME/conf/elasticsearch.service
 substituteVars elasticsearch.yml $ARCHIVE_HOME/conf/elasticsearch.yml
 substituteVars fedora.install.properties $ARCHIVE_HOME/conf/fedora.install.properties
 substituteVars fedora.fcfg $ARCHIVE_HOME/conf/fedora.fcfg
+substituteVars fedora.service $ARCHIVE_HOME/conf/fedora.service
 substituteVars fedora-users.xml $ARCHIVE_HOME/conf/fedora-users.xml
 substituteVars forms.env         $ARCHIVE_HOME/conf/forms.env
 substituteVars heritrix-start.sh $ARCHIVE_HOME/conf/heritrix-start.sh
@@ -59,7 +60,6 @@ substituteVars tomcat.logging.properties $ARCHIVE_HOME/conf/tomcat.logging.prope
 substituteVars site.conf $ARCHIVE_HOME/conf/site.conf
 substituteVars site.ssl.conf $ARCHIVE_HOME/conf/site.ssl.conf
 substituteVars wayback.ssl.conf $ARCHIVE_HOME/conf/wayback.$DOMAIN.conf
-substituteVars tomcat.service $ARCHIVE_HOME/conf/tomcat.service
 substituteVars tomcat-users.xml $ARCHIVE_HOME/conf/tomcat-users.xml
 substituteVars tomcat.conf $ARCHIVE_HOME/conf/tomcat.conf
 substituteVars toscience-api.service $ARCHIVE_HOME/conf/toscience-api.service
@@ -95,7 +95,30 @@ keytool -import -trustcacerts -noprompt -alias to.science.drupal -file $SSL_PUBL
 # keytool -import -trustcacerts -noprompt -alias datacite -file $ARCHIVE_HOME/conf/datacite.cert -keystore $KEYSTORE -storepass $STOREPASS -keypass $KEYPASS
 
 # Importiert ein Zertifikat für heritrix in den Schlüsselspeicher:
-keytool -genkey -storetype pkcs12 -noprompt -alias heritrix -keyalg RSA -keysize 4096 -dname "C=$SSL_PUBLIC_CERT_COUNTRY, ST=$SSL_PUBLIC_CERT_STATE, L=$SSL_PUBLIC_CERT_LOCATION, O=$SSL_PUBLIC_CERT_ORGANIZATION, OU=$SSL_PUBLIC_CERT_ORGANIZATION_UNIT, CN=$HERITRIX_URL" -validity 3650 -keystore $KEYSTORE -storepass $STOREPASS -keypass $KEYPASS
+#keytool -genkey -storetype pkcs12 -noprompt -alias heritrix -keyalg RSA -keysize 4096 -dname "C=$SSL_PUBLIC_CERT_COUNTRY, ST=$SSL_PUBLIC_CERT_STATE, L=$SSL_PUBLIC_CERT_LOCATION, O=$SSL_PUBLIC_CERT_ORGANIZATION, OU=$SSL_PUBLIC_CERT_ORGANIZATION_UNIT, CN=$HERITRIX_URL" -validity 3650 -keystore $KEYSTORE -storepass $STOREPASS -keypass $KEYPASS
+# Peter 18.01.2024
+# 1. bestehendes Zertifikat heritrix aus dem heritrix_keystore herauslöschen oder (besser) den heritrix_keystore ganz löschen
+# 2. Heritrix erzeugt beim ersten Start ein Zertfikat: ==> ??
+# -s, --ssl-params ARG
+# Specifies a keystore path, keystore password, and key password for HTTPS 
+# use. Separate the values with commas and do not include whitespace. By 
+# default Heritrix will generate a self-signed certificate the first time 
+# it is run.
+# 3. Hole das selbstsignierte Zertifikat für Heritrix von dem Server:
+echo | openssl s_client -servername api.nwweb-test.hbz-nrw.de -connect api.nwweb-test.hbz-nrw.de:8443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /opt/toscience/conf/heritrix.crt
+# 4. Falls schon ein Zertifikat mit Alias "heritrix" im toscience_keystore existiert, zuerst löschen:
+# keytool -delete -noprompt -alias heritrix -keystore toscience_keystore -storepass $STOREPASS -keypass $KEYPASS
+# 5A. Ist das heritrix Zertifikat im api keystore ?
+# keytool -list -alias heritrix -keystore $KEYSTORE -storepass ${PASSWORD}123 > /dev/null
+# if (($? == 0)); then
+#   echo "Add new heritrix key!"
+#   keytool -keystore $KEYSTORE -storepass $STOREPASS -keypass $KEYPASS -alias heritrix -genkey -keyalg RSA -dname "CN=localhost" -validity 3650
+# fi
+# 5B. Importiere das neue Heritrix-Zertifikat in den toscience_keystore:
+keytool -import -trustcacerts -noprompt -alias heritrix -file /opt/toscience/conf/heritrix.crt -keystore $KEYSTORE -storepass $STOREPASS -keypass $KEYPASS
+# ==> keytool -import -trustcacerts -noprompt -alias heritrix -file /opt/toscience/conf/heritrix.crt -keystore /opt/toscience/conf/toscience_keystore -storepass LiBPMjU5Q5ujym1z -keypass LiBPMjU5Q5ujym1z
+# ====> Zertifikat wurde Keystore hinzugefügt
+# 6. API Neustart ==> 2, 5A, 5B geht alles nicht. Es kommt immer noch "heritrix is too busy"
 
 }
 

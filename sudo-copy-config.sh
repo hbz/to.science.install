@@ -9,14 +9,14 @@ function sudoCopyConfig()
  cp $ARCHIVE_HOME/conf/toscience-labels.service /etc/systemd/system/
  cp $ARCHIVE_HOME/conf/toscience-forms.service /etc/systemd/system/
  cp $ARCHIVE_HOME/conf/skos-lookup.service /etc/systemd/system/
- cp $ARCHIVE_HOME/conf/tomcat.service /etc/systemd/system/
+ cp $ARCHIVE_HOME/conf/fedora.service /etc/systemd/system/
  cp $ARCHIVE_HOME/conf/elasticsearch.service /etc/systemd/system/
  cp $ARCHIVE_HOME/conf/heritrix.service /etc/systemd/system/
  systemctl enable toscience-api
  systemctl enable toscience-labels
  systemctl enable toscience-forms
  systemctl enable skos-lookup
- systemctl enable tomcat
+ systemctl enable fedora
  systemctl enable elasticsearch
  systemctl enable heritrix
  ln -s $ARCHIVE_HOME/conf/site.ssl.conf /etc/apache2/vhosts.d/site.ssl.conf
