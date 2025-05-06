@@ -241,7 +241,7 @@ https://wiki.duraspace.org/display/FEDORA36/Spring+Security
 			automatically computing checksums as specified by the above 
 			parameter. Valid values are: MD5  SHA-1  SHA-256  SHA-384  SHA-512.</comment>
     </param>
-    <param name="autoChecksum" value="false">
+    <param name="autoChecksum" value="true">
       <comment>Controls whether a checksum is automatically computed for 
 			every datastream as the datastream is added to the repository. This 
 			will allow the integrity of datastream contents to be periodically 

@@ -1,0 +1,230 @@
+{
+    "@context": "https://api.localhost.de/context.json",
+    "@id": "frl:6406885",
+    "accessScheme": "private",
+    "alternative": [
+        "sdasd"
+    ],
+    "associatedDataset": [
+        "dgfdgfd",
+        "nnvcbcv"
+    ],
+    "associatedPublication": [
+        "fghfg",
+        "etert"
+    ],
+    "catalogId": "ED6406885",
+    "contentType": "researchdata",
+    "contributerOrder": [
+        "https://d-nb.info/gnd/1243951761 | https://orcid.org/0000-0001-9795-9952"
+    ],
+    "contributor": [
+        {
+            "@id": "https://d-nb.info/gnd/10322573-0",
+            "prefLabel": "We Three",
+            "role": [
+                "it_consultant",
+                "database_consultant",
+                "scientific_supervisor"
+            ]
+        },
+        {
+            "@id": "http://localhost:8080/adhoc/uri/YXNkYXNkc2E=",
+            "prefLabel": "asdasdsa",
+            "role": [
+                "scientific_supervisor",
+                "programmer_developer"
+            ]
+        }
+    ],
+    "creator": [
+        {
+            "@id": "https://d-nb.info/gnd/1243951761",
+            "prefLabel": "SDR..., J...",
+            "role": [
+                "technical_assistant",
+                "scientific_consultant"
+            ]
+        },
+        {
+            "@id": "https://orcid.org/0000-0001-9795-9952",
+            "prefLabel": "sd, sjs",
+            "role": [
+                "database_consultant",
+                "scientific_supervisor"
+            ]
+        }
+    ],
+    "dataOrigin": [
+        {
+            "@id": "http://hbz-nrw.de/regal#Physicalexamination"
+        },
+        {
+            "@id": "http://hbz-nrw.de/regal#Exsitumeasurement"
+        }
+    ],
+    "ddc": [
+        {
+            "@id": "http://dewey.info/class/000/",
+            "prefLabel": "Informatik, Informationswissenschaft, allgemeine Werke"
+        },
+        {
+            "@id": "http://dewey.info/class/330/",
+            "prefLabel": "Wirtschaft"
+        }
+    ],
+    "description": [
+        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    ],
+    "doi": [
+        "fhfh",
+        "vbnvb"
+    ],
+    "embargoTime": [
+        "2024-10-14"
+    ],
+    "fundingId": [
+        {
+            "@id": "http://dx.doi.org/10.13039/100028375",
+            "prefLabel": "South Dakota Nurses Association"
+        },
+        {
+            "@id": "http://dx.doi.org/10.13039/100027664",
+            "prefLabel": "National RTAP"
+        }
+    ],
+    "fundingProgram": [
+        "asdasd",
+        "sfsdfdsfds"
+    ],
+    "institution": [
+        {
+            "@id": "https://d-nb.info/gnd/1161694544",
+            "prefLabel": "Mdo-sde-dpal"
+        },
+        {
+            "@id": "https://d-nb.info/gnd/126466041",
+            "prefLabel": "We Ihsin"
+        }
+    ],
+    "isLike": [
+        "sdfsdfds",
+        "fdgdfgr"
+    ],
+    "isMemberOf": [
+        {
+            "@id": "info:fedora/oai:researchdata",
+            "prefLabel": "info:fedora/oai:researchdata"
+        }
+    ],
+    "isPrimaryTopicOf": [
+        {
+            "@id": "http://localhost:8080/resource/frl:6406885/edit",
+            "prefLabel": "http://localhost:8080/resource/frl:6406885/edit",
+            "primaryTopic": "frl:6406885"
+        }
+    ],
+    "issued": "2023",
+    "itemID": [
+        {
+            "@id": "oai:api.localhost.de:frl:6406885",
+            "prefLabel": "oai:api.localhost.de:frl:6406885"
+        }
+    ],
+    "joinedFunding": [
+        {
+            "fundingJoined": {
+                "@id": "http://dx.doi.org/10.13039/100028375",
+                "prefLabel": "South Dakota Nurses Association"
+            },
+            "fundingProgramJoined": "asdasd",
+            "projectIdJoined": "324324"
+        },
+        {
+            "fundingJoined": {
+                "@id": "http://dx.doi.org/10.13039/100027664",
+                "prefLabel": "National RTAP"
+            },
+            "fundingProgramJoined": "sfsdfdsfds",
+            "projectIdJoined": "234324"
+        }
+    ],
+    "language": [
+        {
+            "@id": "http://id.loc.gov/vocabulary/iso639-2/ita",
+            "prefLabel": "Italienisch"
+        }
+    ],
+    "license": [
+        {
+            "@id": "http://opendatacommons.org/licenses/odbl/1-0/",
+            "prefLabel": "ODbL (Open Database License)"
+        }
+    ],
+    "medium": [
+        {
+            "@id": "http://purl.org/ontology/bibo/Image",
+            "prefLabel": "image"
+        }
+    ],
+    "nextVersion": [
+        "fghfgh"
+    ],
+    "other": [
+        {
+            "@id": "https://d-nb.info/gnd/1072931923",
+            "prefLabel": "Im. Tr. Wöller (Leipzig)",
+            "role": [
+                "database_consultant",
+                "scientific_supervisor"
+            ]
+        }
+    ],
+    "prefLabel": [
+        "frl:6406885"
+    ],
+    "previousVersion": [
+        "dfgfdg"
+    ],
+    "primaryTopic": "frl:6406885",
+    "projectId": [
+        "324324",
+        "234324"
+    ],
+    "publishScheme": "private",
+    "recordingCoordinates": [
+        {
+            "@id": "http://www.openstreetmap.org/?mlat=50.94&mlon=6.95"
+        }
+    ],
+    "recordingPeriod": [
+        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    ],
+    "reference": [
+        "dfgfdg",
+        "erwdsad"
+    ],
+    "subject": [
+        {
+            "@id": "https://d-nb.info/gnd/4813774-1",
+            "prefLabel": "https://d-nb.info/gnd/4813774-1"
+        },
+        {
+            "@id": "http://aims.fao.org/aos/agrovoc/c_2633",
+            "prefLabel": "http://aims.fao.org/aos/agrovoc/c_2633"
+        }
+    ],
+    "title": [
+        "asdsadsa"
+    ],
+    "urn": [
+        "vnbv",
+        "dfgfdg"
+    ],
+    "usageManual": [
+        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    ],
+    "yearOfCopyright": [
+        "2023"
+    ]
+}
