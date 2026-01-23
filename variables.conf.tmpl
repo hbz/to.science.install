@@ -32,6 +32,13 @@ HERITRIX_URL=https://localhost:8443
 HERITRIX_PASSWORD=$ADMIN_PASSWORD
 INDEXNAME=toscience
 IP=all
+# die folgenden 3 Parameter steuern die Kennzeichen-Ermittlung im Crawl-Report
+# mögliche Kennzeichen (diese Zeile auskommentieren, falls keine Kennzeichen-Ermittlung gewünscht ist)
+#KENNZEICHEN=BIB1,BIB2,BIB3
+# Kennzeichen-Ermittlung anhand von Nummernkreisen
+#NUMMERNKREISE=BIB1:10000-20000,BIB2:20000-30000,BIB3:30000-40000
+# Kennzeichen-Ermittlung anhand von User-Ids
+#USERIDS=BIB1:100,101,102.BIB2:110,111.BIB3:120,121,122,123
 KEYSTORE=$ARCHIVE_HOME/conf/toscience_keystore
 STOREPASS=
 KEYPASS=
